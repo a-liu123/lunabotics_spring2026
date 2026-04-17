@@ -1,23 +1,18 @@
 # Spring 2026 Luna 
 
 
-# 1
-git clone https://github.com/YOUR_USERNAME/rover-control.git
-cd rover-control
-
-# 2
+# install dependencies (pyserial and keyboard)
 pip install -r requirements.txt
 
-# 3
-- Open arduino/rover_control.ino in Arduino IDE
-- Upload to Arduino Uno
+# upload code
+open arduino/rover_control.ino in arduino ide and update code
 
-# 4
-ls /dev/tty.*
+# open tools on the top and find ur serial
+looks like this: ls /dev/tty.*
 
-Update the port in keyboard_control.py
+open keyboard_control.py and update port
 
-# 5
+# run the code
 python control/keyboard_control.py
 
 # binds

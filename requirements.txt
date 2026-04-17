@@ -1,2 +1,2 @@
-Pyserial
+pyserial
 keyboard
