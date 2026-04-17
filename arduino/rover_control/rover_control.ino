@@ -1,21 +1,21 @@
 #include <Servo.h>
 
-const int spark1_pin = 10;
-const int spark2_pin  = 11;
-const int spark3_pin = 12;
-const int spark4_pin = 13;
-
+const int spark1_pin = 9;  //switched these for our current setup
+const int spark2_pin  = 10;
+const int spark3_pin = 11;
+const int spark4_pin = 12;
 
 int reverseSpeed = 1400;
 const int off = 1500;
 int forwardSpeed = 1600;
 int wait = 2000;
 
-
-Servo spark1;
+Servo spark1; 
 Servo spark2;
 Servo spark3;
 Servo spark4;
+
+int flip(int speed) { return off + (off - speed); }
 
 void setup() {
   Serial.begin(9600);
@@ -26,12 +26,12 @@ void setup() {
 }
 
 void leftSide(int speed) {
-  spark1.writeMicroseconds(speed);
+  spark1.writeMicroseconds(flip(speed));  // pin 9 reversed
   spark3.writeMicroseconds(speed);
 }
 
 void rightSide(int speed) {
-  spark2.writeMicroseconds(speed);
+  spark2.writeMicroseconds(flip(speed));  // pin 10 reversed
   spark4.writeMicroseconds(speed);
 }
 
@@ -58,7 +58,8 @@ void loop() {
     }
     else if (command == 'd') { 
       leftSide(forwardSpeed);
-      rightSide(reverseSpeed);
+      spark2.writeMicroseconds(flip(reverseSpeed));  // front right reverse
+      spark4.writeMicroseconds(forwardSpeed);         // back right forward
     }
     else if (command == 'x') { 
       stop();
