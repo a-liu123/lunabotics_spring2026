@@ -1,11 +1,8 @@
 import serial
 import keyboard
-import time
 
-ser = serial.Serial('/dev/tty.usbmodem', 9600)  
-time.sleep(2)
+ser = serial.Serial('/dev/tty.***', 9600) 
 
-print("Controls: W A S D to move, X to stop")
 
 while True:
     if keyboard.is_pressed('w'):
